@@ -1,0 +1,56 @@
+"""
+Given the world as a two dimensional grid, find the best hamlet
+for your settlement.
+
+A hamlet is any contiguous group of non-barren squares, where contiguous
+is constrained to the horizontal and vertical directions (not diagonal).
+
+The following constraints _must_ be met:
+
+  * At least one Water. Additional Waters provide no benefit (W > 1).
+  * At least one Game. More than two Games provide no benefit (G > 2).
+
+The following squares make for better hamlets:
+
+  * A Defense square, but only if it is on a boundary. The more the better.
+  * A Cave square, but having more than one doesn’t help.
+  * A Fertile ground square. One is great, additional are good.
+
+Centrality within the hamlet -- the closer in shape to a circle, the better.
+
+
+The following are valid hamlets:
+
+    W G                 W G C C             F W D
+                              W F F         D W C
+                                            G W W
+
+The following are not valid hamlets:
+
+    W F                 G C F G D
+
+Find the best hamlet in: 
+
+
+       0 1 2 3 4 5 6
+     ┌--------------
+    0| W G . F . W .
+    1| . C . C . . C
+    2| . . D . G D F
+    3| G F W . F W .
+    4| . . . W . . .
+    5| G C . W . C W
+    6| F . C . F D F
+    7| . W F G . G .
+    
+E.g., given the input_board below.
+"""
+
+input_board = [['W', 'G', '.', 'F', '.', 'W', '.'],
+               ['.', 'C', '.', 'C', '.', '.', 'C'],
+               ['.', '.', 'D', '.', 'G', 'D', 'F'],
+               ['G', 'F', 'W', '.', 'F', 'W', '.'],
+               ['.', '.', '.', 'W', '.', '.', '.'],
+               ['G', 'C', '.', 'W', '.', 'C', 'W'],
+               ['F', '.', 'C', '.', 'F', 'D', 'F'],
+               ['.', 'W', 'F', 'G', '.', 'G', '.']]
