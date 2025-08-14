@@ -102,7 +102,7 @@ fn run_scenarios() {
         board: original_problem().0,
         program: original_problem().1,
     }];
-    scenarios.extend_from_slice(&SCENARIOS);
+    scenarios.extend(SCENARIOS.iter().cloned());
 
     for sc in scenarios {
         println!("\n== {} ==\n{}", sc.name, sc.blurb);
@@ -127,10 +127,11 @@ fn run_speed(
     max_total_time_s: f64,
 ) {
     use std::cmp::max;
-    let program = if SCENARIOS.is_empty() {
+    let scen_ref = &*SCENARIOS;
+    let program = if scen_ref.is_empty() {
         original_problem().1
     } else {
-        SCENARIOS[scen.min(SCENARIOS.len() - 1)].program.clone()
+        scen_ref[scen.min(scen_ref.len() - 1)].program.clone()
     };
     println!("== Random stress (using scenario {} program) ==", scen);
     let mut size = start_size.max(2);
